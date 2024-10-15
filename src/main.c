@@ -21,8 +21,11 @@ int main()
 
   addRow(&testTable); 
   addRow(&testTable);
-  printf("Table has %d and %d columns", testTable.row_count, testTable.column_count); 
-  //free(&testTable);  
+  printf("Table has %d and %d columns\n", testTable.row_count, testTable.column_count); 
+  
+
+  dropTable(&testTable);
+  printf("Table has %d and %d columns\n", testTable.row_count, testTable.column_count); 
   return 0; 
 }
 

@@ -24,6 +24,7 @@ void addColumn(struct table *tbl, const char *col_name) {
     tbl->column_count++; 
     
     //allocate all of our columns into the dynamic array
+    //if tbl->columns is NULL,
     tbl->columns = realloc(tbl->columns, tbl->column_count * sizeof(struct column));
     if (tbl->columns == NULL) exit(1); //again, more memory allocation errors that will need to be handled
     
@@ -46,9 +47,13 @@ void dropTable(struct table *tbl) {
         dropTable(&tbl->rows[i]);  
     } 
     free(tbl->rows); 
+
+    //update values 
 }
 
 void joinTable(struct table *tbl1, struct table *tbl2) {
+    //join table upon common colmumn for now
+    //INNER JOIN for now
 
 }
 
