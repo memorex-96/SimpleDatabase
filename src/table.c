@@ -57,11 +57,32 @@ void dropTable(struct table *tbl) {
     tbl->name[0] = '\0'; 
     
 }
+//combine some common column that is present in both tbl1 and tbl2 
+void joinTable(struct table *tbl1, struct table *tbl2, const char common[10]) {
+      struct table *newTbl = malloc(sizeof(struct table)); 
+      createTable(newTbl);
+      
+      int tbl1_common_index = -1; 
+      int tbl2_common_index = -1; 
 
-void joinTable(struct table *tbl1, struct table *tbl2) {
-    //join table upon common colmumn for now
-    //INNER JOIN for now
+      for (int i = 0; i < tbl1->column_count; i++) { 
+          if (strcmp(tbl1->columns[i].name, common) == 0) { 
+              tbl1_common_index = i;
+              break; 
+          } 
+      } 
 
+      for (int i = 0; i < tbl2->column_count; i++) {
+          if (strcmp(tbl2->columns[i].name, common) == 0) { 
+              tbl2_common_index = i;
+              break; 
+          } 
+      } 
+      if (tbl1_common_index != -1 && tbl2_common_index != -1) {
+          //copy the tables into newTbl based on common column 
+      } else { 
+          printf("No common columns in either tables are found\n"); 
+      } 
 }
 
 //does't need pointer 
