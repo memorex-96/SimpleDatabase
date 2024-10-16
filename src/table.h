@@ -31,7 +31,7 @@ void addColumn(struct table *tbl, const char *col_name);
 //dropTable needs to free memory from table struct allocated memory
 void dropTable(struct table *table);
 //Need to fix, check table.c NOTE
-void joinTable(struct table *table1, struct table *table2, const char common[10]); //we seem to be attempting to read more bytes than what exists
+void joinTable(struct table *table1, struct table *table2, const char common[MAX_LENGTH]); //we seem to be attempting to read more bytes than what exists
 void printTable(struct table table); 
 /* NOTE FOR JOIN: 
  * Join function:

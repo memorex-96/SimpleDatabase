@@ -38,7 +38,8 @@ int main()
   addColumn(&table2, "Common"); 
   addRow(&table1);
   addRow(&table2);
-  joinTable(&table1, &table2, "Common");    
+  char common[MAX_LENGTH] = {"Common"}; 
+  joinTable(&table1, &table2, common);    
   return 0; 
 }
 
