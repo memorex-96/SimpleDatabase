@@ -57,14 +57,17 @@ void dropTable(struct table *tbl) {
     tbl->name[0] = '\0'; 
     
 }
+//*NOTE* need to fix!!! joinTable must return a new table based on matches in specified columns!!!
 //combine some common column that is present in both tbl1 and tbl2 
 void joinTable(struct table *tbl1, struct table *tbl2, const char common[10]) {
+
       struct table *newTbl = malloc(sizeof(struct table)); 
       createTable(newTbl);
       
       int tbl1_common_index = -1; 
       int tbl2_common_index = -1; 
-
+      
+      //need to find the index of the common column, then compare. 
       for (int i = 0; i < tbl1->column_count; i++) { 
           if (strcmp(tbl1->columns[i].name, common) == 0) { 
               tbl1_common_index = i;
@@ -77,9 +80,12 @@ void joinTable(struct table *tbl1, struct table *tbl2, const char common[10]) {
               tbl2_common_index = i;
               break; 
           } 
-      } 
+      }
+
       if (tbl1_common_index != -1 && tbl2_common_index != -1) {
-          //copy the tables into newTbl based on common column 
+          //copy the tables into newTbl based on common column
+         
+          
       } else { 
           printf("No common columns in either tables are found\n"); 
       } 
