@@ -44,11 +44,18 @@ void dropTable(struct table *tbl) {
     //same for the rows except rows can be objects from another table, so 
     //we'll recursively free the memory in those too to avoid additional memory leaks. 
     for (int i = 0; i < tbl->row_count; i++) { 
-        dropTable(&tbl->rows[i]);  
+      dropTable(&tbl->rows[i]);  
     } 
     free(tbl->rows); 
 
-    //update values 
+    //update values
+    tbl->columns = NULL; 
+    tbl->column_count = 0; 
+    tbl->rows = NULL; 
+    tbl->row_count = 0; 
+    tbl->pk = 0; 
+    tbl->name[0] = '\0'; 
+    
 }
 
 void joinTable(struct table *tbl1, struct table *tbl2) {
